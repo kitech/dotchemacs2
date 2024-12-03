@@ -8,7 +8,7 @@
 
 (setq ycmd-force-semantic-completion nil)
 (set-variable 'ycm_server_python_interpreter "/usr/bin/python")
-;(set-variable 'ycmd-server-command '("python2" "/home/me/oss/YouCompleteMe/third_party/ycmd/ycmd/"))
+;;(set-variable 'ycmd-server-command '("python2" "/home/me/oss/YouCompleteMe/third_party/ycmd/ycmd/"))
 ;; (set-variable 'ycmd-server-command '("python" "/usr/share/vim/vimfiles/third_party/ycmd/ycmd/"))
 ;; (set-variable 'ycmd-server-command '("/usr/bin/python2" "/home/me/oss/ycmd/ycmd"))
 (set-variable 'ycmd-server-command '("python3" "/home/me/oss/ycmd/ycmd"))
@@ -28,8 +28,8 @@
 ;;(add-hook 'php-mode-hook 'ycmd-mode)
 ;;(add-hook 'go-mode-hook 'ycmd-mode) ;; fix two duplicate gocode conflict with company-go
 (add-hook 'go-mode-hook (lambda () (company-mode -1)) 'append)
-;(add-hook 'go-mode-hook #'flycheck-mode)
-;(setq gofmt-show-errors 'buffer)
+;;(add-hook 'go-mode-hook #'flycheck-mode)
+;;(setq gofmt-show-errors 'buffer)
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 ;; (add-hook 'ruby-mode-hook 'ycmd-mode)
@@ -45,7 +45,7 @@
 (global-set-key "\M-p" 'duplicate-previous-line)
 (global-set-key "\M-n" 'duplicate-following-line)
 ;; some custom
-;(global-set-key (kbd "C-;") 'comment-line)
+;;(global-set-key (kbd "C-;") 'comment-line)
 (global-set-key (kbd "C-,") 'comment-line)
 (global-set-key (kbd "C-u") 'eval-region)
 (global-set-key (kbd "<C-tab>") 'switch-to-next-buffer)
@@ -62,9 +62,9 @@
           (lambda () (c-add-style "my-style" my-protobuf-style t)))
 (autoload 'protobuf-mode "protobuf-mode" "Protobuf mode." t)
 (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
-;(load "/usr/lib/python3.5/site-packages/kivy/tools/highlight/kivy-mode.el")
-;(add-to-list 'auto-mode-alist '("\\.kv\\'" . kivy-mode))
-;(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+;;(load "/usr/lib/python3.5/site-packages/kivy/tools/highlight/kivy-mode.el")
+;;(add-to-list 'auto-mode-alist '("\\.kv\\'" . kivy-mode))
+;;(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
 
 (autoload 'dart-mode "dart-mode" "Darat mode." t)
 (add-to-list 'auto-mode-alist '("\\.dart$" . dart-mode))
@@ -75,24 +75,52 @@
 (add-to-list 'auto-mode-alist '("\\.g4\\'" . antlr-mode))
 
 ;; folding, TODO dynamic load dash and s，少一个折叠指示标识，像小三角形
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/dash-20160820.501/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/s-20160928.636/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/29.4/develop/dash-20240510.1327/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/s-20160928.636/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/29.4/develop/hydra-20220910.1206/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/29.4/develop/lv-20200507.1518/"))
-;(require 'dash)
-;(require 's)
-;(require 'origami)
-(require 'v-mode)
-;(require 'vlang-mode)
-;(global-origami-mode t)
-;(global-set-key (kbd "C--") 'origami-toggle-node)
+
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/dash-20160820.501/"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/s-20160928.636/"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/29.4/develop/dash-20240510.1327/"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/s-20160928.636/"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/29.4/develop/hydra-20220910.1206/"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/29.4/develop/lv-20200507.1518/"))
+;; (require 'dash)
+;; (require 's)
+;; (require 'origami)
+;; should be auto require now
+;; (require 'v-mode)
+;; (require 'vlang-mode)
+;; (global-origami-mode t)
+;; (global-set-key (kbd "C--") 'origami-toggle-node)
+;; (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(autoload 'v-mode "v-mode" "Some documentation." t)
 (add-to-list 'auto-mode-alist '("\\.v\\'" . v-mode))
 (add-to-list 'auto-mode-alist '("\\.vsh\\'" . v-mode))
-;(add-to-list 'auto-mode-alist '("\\.v\\'" . vlang-mode))
-(add-hook 'v-mode-hook `company-mode)
-          
+;;(add-to-list 'auto-mode-alist '("\\.v\\'" . vlang-mode))
+;; (add-hook 'v-mode-hook `company-mode)
+
+;;https://emacs-lsp.github.io/lsp-mode/page/adding-new-language/
+;;(require 'lsp-mode)
+;;(add-to-list 'lsp-language-id-configuration '(v-mode . "v"))
+;; (add-to-list 'lsp-language-id-configuration '(".*\\.svelte$" . "svelte"))
+;;(require 'v-mode)
+;;(lsp-register-client (make-lsp-client
+;;                    :new-connection (lsp-stdio-connection "v-analyzer")
+;;                  :activation-fn (lsp-activate-on "v")
+;;                :server-id 'v-analyzer))
+;;(add-hook 'v-mode-hook 'lsp-mode)
+;; 这有点复杂啊
+(add-hook 'v-mode-hook
+          (lambda ()
+            ;; (message "run lsp add lang...")
+            (lsp-completion-mode)
+            (add-to-list 'lsp-language-id-configuration '(v-mode . "v"))
+            (lsp-register-client (make-lsp-client
+                                  :new-connection (lsp-stdio-connection "v-analyzer")
+                                  :activation-fn (lsp-activate-on "v")
+                                  :server-id 'v-analyzer))
+            ;; (company-mode)
+            (lsp-mode)
+            ))
+
 ;;(global-set-key "\C-c @ \C-M-s" 'origami-open-all-nodes)
 ;;(global-set-key "\C-c @ \C-M-h" 'origami-close-all-nodes)
 ;; (global-set-key "\C-c @ \C-s" 'origami-open-node)
@@ -116,7 +144,7 @@
 (setq ecb-display-news-for-upgrade nil)
 (setq ecb-tip-of-the-day nil)
 (setq stack-trace-on-error t)
-;(require 'ecb)
+                                        ;(require 'ecb)
 ;; (setq ecb-compile-window t)
 ;; (setq ecb-compile-window-height 6)
 ;; (setq ecb-layout-name "left8")  ;; and left8 is the default
@@ -135,7 +163,7 @@
 ;;  (neotree-dir default-directory))
 
 ;; (setq helm-completing-read-handlers-alist
-   ;;   '((minibuffer-complete . ido)))
+;;   '((minibuffer-complete . ido)))
 ;; (setq helm-autoresize-max-height 30)
 ;; (setq helm-autoresize-min-height 30)
 
@@ -158,7 +186,7 @@ This function should only modify configuration layer settings."
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
    ;; dotspacemacs-distribution 'spacemacs
-	dotspacemacs-distribution 'spacemacs-base
+   dotspacemacs-distribution 'spacemacs-base
 
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
@@ -183,7 +211,7 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-		;csv
+                                        ;csv
      lua
      systemd
      nginx
@@ -202,24 +230,24 @@ This function should only modify configuration layer settings."
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      ;; version-control
-     
+
      auto-completion
      ;; company + gopls 占内存还是太大了，用回 company-go
-     ;;company
-	  tree-sitter
-		lsp ;; ycmd
-     ;  better-defaults
-     ;chinese
+     company
+     tree-sitter
+     lsp ;; ycmd
+     ;;  better-defaults
+     ;;chinese
      cscope
-     ; cfengine
+     ;; cfengine
      emacs-lisp
-     ;git
+     ;;git
      markdown
      tabs ;; 这个好
-     ;org
-     ;(shell :variables
-      ;      shell-default-height 20
-       ;     shell-default-position 'bottom)
+     ;;org
+     ;;(shell :variables
+     ;;      shell-default-height 20
+     ;;     shell-default-position 'bottom)
      syntax-checking
      version-control
      ;; flycheck
@@ -236,11 +264,11 @@ This function should only modify configuration layer settings."
      javascript
      ;; shell-script
      swift
-     ;sql
+     ;;sql
      elm
      (ruby :variables ruby-enable-enh-ruby-mode t)
-     ;crystal
-     ;julia
+     ;;crystal
+     ;;julia
      kotlin
      haskell
 
@@ -249,19 +277,19 @@ This function should only modify configuration layer settings."
      dash
      protobuf
      plantuml
-    restructuredtext
-    restclient
-    windows-scripts
+     restructuredtext
+     restclient
+     windows-scripts
 
-     ;nlinum
+     ;;nlinum
      imenu-list
      gtags
      toml
      yaml
-     ;latex ;; 可能导致主界面freeze
+     ;;latex ;; 可能导致主界面freeze
      spacemacs-layouts
-		;extra-langs
-		;QML
+     ;;extra-langs
+     ;;QML
 
      (ranger :variables ranger-show-preview t)
      ;; sr-speedbar  ;; 目前还很难用
@@ -278,7 +306,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(origami s dash hydra lv lsp-mode)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -656,28 +684,28 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
-;; http(ok), https(timeout???)
-(setq configuration-layer-elpa-archives
-	'(("melpa-cn" . "https://mirrors.nju.edu.cn/elpa/melpa/")
-		("org-cn" . "https://mirrors.nju.edu.cn/elpa/org/")
-		("gnu-cn" . "https://mirrors.nju.edu.cn/elpa/gnu/")))
-	;'(("melpa-cn" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
-	;	("org-cn" . "https://mirrors.ustc.edu.cn/elpa/org/")
-	;	("gnu-cn" . "https://mirrors.ustc.edu.cn/elpa/gnu/")))
-	; 垃圾 tuna 动不动就403
-    ;'(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-    ;  ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-    ;  ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+  ;; http(ok), https(timeout???)
+  (setq configuration-layer-elpa-archives
+        '(("melpa-cn" . "https://mirrors.nju.edu.cn/elpa/melpa/")
+          ("org-cn" . "https://mirrors.nju.edu.cn/elpa/org/")
+          ("gnu-cn" . "https://mirrors.nju.edu.cn/elpa/gnu/")))
+  ;;'(("melpa-cn" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
+  ;;	("org-cn" . "https://mirrors.ustc.edu.cn/elpa/org/")
+  ;;	("gnu-cn" . "https://mirrors.ustc.edu.cn/elpa/gnu/")))
+  ;; 垃圾 tuna 动不动就403
+  ;;'(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  ;;  ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+  ;;  ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
-     (setq-default
-     dotspacemacs-check-for-update nil
-     dotspacemacs-elpa-https t
-     dotspacemacs-line-numbers t
-     dotspacemacs-startup-recent-list-size 10
-     dotspacemacs-auto-resume-layouts t
+  (setq-default
+   dotspacemacs-check-for-update nil
+   dotspacemacs-elpa-https t
+   dotspacemacs-line-numbers t
+   dotspacemacs-startup-recent-list-size 10
+   dotspacemacs-auto-resume-layouts t
 
-     )
-)
+   )
+  )
 
 
 (defun dotspacemacs/user-config ()
@@ -735,22 +763,26 @@ before packages are loaded."
 
     ;; (push '("^\*helm.+\*$" :regexp t) popwin:special-display-config)
     ;; (add-hook 'helm-after-initialize-hook (lambda ()
-	;; 				    (popwin:display-buffer helm-buffer t)
-	;; 				    (popwin-mode -1)))
+    ;;            (popwin:display-buffer helm-buffer t)
+    ;;            (popwin-mode -1)))
     ;;  Restore popwin-mode after a Helm session finishes.
     ;; (add-hook 'helm-cleanup-hook (lambda () (popwin-mode 1)))
 
-	(menu-bar-mode t)
-	(scroll-bar-mode t)
-	(desktop-save-mode t) ; save/read session
-	(size-indication-mode t)
-	;; ctrl + Mouse-1 = goto define
+    (menu-bar-mode t)
+    (scroll-bar-mode t)
+    (setq desktop-save nil)
+    ;; (desktop-save-mode nil) ; save/read session
+    ;; (setq desktop-path '("~/.emacs.d/.cache/"))
+    ;; (desktop-read)
+    (size-indication-mode t)
+    (show-paren-mode t)
+    ;; ctrl + Mouse-1 = goto define
     ;; (set
     )
-    
+
   )
-  
-  ;; spacemacs 0.105两个重要的变化，也是小坑，
+
+;; spacemacs 0.105两个重要的变化，也是小坑，
 ;; --insecure
 ;; dotspacemacs-check-for-update
 ;; 前者帮助在不通畅的网络环境下下载包，第二个是保证程序安装完成后，不再需要通畅的网络支持。
@@ -761,18 +793,18 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (ansi package-build shut-up epl git commander f dash s csv-mode counsel-gtags company-lua lua-mode nim-mode flycheck-nimsuggest commenter flycheck-nim zeal-at-point yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill typit treemacs-projectile toml-mode toc-org tagedit systemd symon swift-mode sudoku string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restclient-helm restart-emacs rbenv ranger rake rainbow-delimiters racer pytest pyenv-mode py-isort pug-mode protobuf-mode prettier-js powershell popwin play-crystal plantuml-mode pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode password-generator paradox pangu-spacing pacmacs overseer org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-restclient ob-http ob-crystal ob-cfengine3 nginx-mode nameless mwim multi-term move-text mmm-mode minitest markdown-toc magit-svn magit-gitflow macrostep lsp-ui lsp-rust lsp-python lsp-julia lsp-javascript-typescript lsp-go lorem-ipsum livid-mode live-py-mode link-hint kotlin-mode julia-repl julia-mode json-navigator js2-refactor js-doc inf-crystal indent-guide importmagic impatient-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-dash helm-ctest helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy font-lock+ flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-kotlin flycheck-haskell flycheck-elm flycheck-crystal flx-ido find-by-pinyin-dired fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help enh-ruby-mode emmet-mode elm-test-runner elm-mode elisp-slime-nav editorconfig dumb-jump drupal-mode dotenv-mode doom-modeline dockerfile-mode docker disaster diminish diff-hl define-word cython-mode cquery counsel-projectile company-web company-tern company-statistics company-rtags company-restclient company-php company-lsp company-go company-ghci company-cabal company-c-headers company-anaconda column-enforce-mode cmm-mode cmake-mode cmake-ide clean-aindent-mode clang-format chruby chinese-conv centered-cursor-mode ccls cargo bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-complete-rst auto-compile ameba aggressive-indent ace-pinyin ace-link ace-jump-helm-line ac-ispell 2048-game))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(package-selected-packages
+     (quote
+      (ansi package-build shut-up epl git commander f dash s csv-mode counsel-gtags company-lua lua-mode nim-mode flycheck-nimsuggest commenter flycheck-nim zeal-at-point yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill typit treemacs-projectile toml-mode toc-org tagedit systemd symon swift-mode sudoku string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restclient-helm restart-emacs rbenv ranger rake rainbow-delimiters racer pytest pyenv-mode py-isort pug-mode protobuf-mode prettier-js powershell popwin play-crystal plantuml-mode pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode password-generator paradox pangu-spacing pacmacs overseer org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-restclient ob-http ob-crystal ob-cfengine3 nginx-mode nameless mwim multi-term move-text mmm-mode minitest markdown-toc magit-svn magit-gitflow macrostep lsp-ui lsp-rust lsp-python lsp-julia lsp-javascript-typescript lsp-go lorem-ipsum livid-mode live-py-mode link-hint kotlin-mode julia-repl julia-mode json-navigator js2-refactor js-doc inf-crystal indent-guide importmagic impatient-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-dash helm-ctest helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy font-lock+ flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-kotlin flycheck-haskell flycheck-elm flycheck-crystal flx-ido find-by-pinyin-dired fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help enh-ruby-mode emmet-mode elm-test-runner elm-mode elisp-slime-nav editorconfig dumb-jump drupal-mode dotenv-mode doom-modeline dockerfile-mode docker disaster diminish diff-hl define-word cython-mode cquery counsel-projectile company-web company-tern company-statistics company-rtags company-restclient company-php company-lsp company-go company-ghci company-cabal company-c-headers company-anaconda column-enforce-mode cmm-mode cmake-mode cmake-ide clean-aindent-mode clang-format chruby chinese-conv centered-cursor-mode ccls cargo bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-complete-rst auto-compile ameba aggressive-indent ace-pinyin ace-link ace-jump-helm-line ac-ispell 2048-game))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+  )

@@ -7,7 +7,7 @@
 
  ;; --debug-init error recursive load
  ("space0" . ((user-emacs-directory . "~/.emacs.d/space0")
-              (env . (("SPACEMACSDIR" . "~/.emacs.d/space0")))))
+              (env . (("SPACEMACSDIR" . "~/.emacs.d/space0p")))))
 
  ("space1" . ((user-emacs-directory . "~/.emacs.d/space1")
               (env . (("SPACEMACSDIR" . "~/.emacs.d/space1p")))))

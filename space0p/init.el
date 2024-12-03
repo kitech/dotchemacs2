@@ -1,0 +1,1 @@
+../space0.spacemacs
