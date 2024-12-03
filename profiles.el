@@ -10,7 +10,7 @@
               (env . (("SPACEMACSDIR" . "~/.emacs.d/space0")))))
 
  ("space1" . ((user-emacs-directory . "~/.emacs.d/space1")
-              (env . (("SPACEMACSDIR" . "~/emacs.d/space1")))))
+              (env . (("SPACEMACSDIR" . "~/.emacs.d/space1")))))
 
 
  ;; >= v25
