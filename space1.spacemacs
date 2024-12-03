@@ -107,10 +107,20 @@
 ;;                  :activation-fn (lsp-activate-on "v")
 ;;                :server-id 'v-analyzer))
 ;;(add-hook 'v-mode-hook 'lsp-mode)
+
+;; 看来只有这样能能够同时包含keywords和lsp的结果
+;; https://www.reddit.com/r/emacs/comments/m52nky/comment/gr2ap03/
+(defun baal-setup-lsp-company ()
+  (setq-local company-backends
+              '((company-capf :with company-dabbrev) company-dabbrev-code company-yasnippet company-files)))
+
+(add-hook 'lsp-completion-mode-hook #'baal-setup-lsp-company)
+
 ;; 这有点复杂啊
 (add-hook 'v-mode-hook
           (lambda ()
             ;; (message "run lsp add lang...")
+
             (lsp-completion-mode)
             (add-to-list 'lsp-language-id-configuration '(v-mode . "v"))
             (lsp-register-client (make-lsp-client
@@ -118,8 +128,14 @@
                                   :activation-fn (lsp-activate-on "v")
                                   :server-id 'v-analyzer))
             ;; (company-mode)
-            (lsp-mode)
+            ;; (setq lsp-completion-provider '(company-capf :with company-dabbrev))
+            ;; (setq company-backends '(company-bbdb company-semantic company-cmake  (company-capf :with company-dabbrev)  company-clang company-files (company-dabbrev-code company-gtags company-etags company-keywords)  company-oddmuse company-dabbrev))
+            (lsp-mode) ;;
+            ;; (setq company-backends '(company-bbdb company-semantic company-cmake  (company-capf :with company-dabbrev)  company-clang company-files (company-dabbrev-code company-gtags company-etags company-keywords)  company-oddmuse company-dabbrev))
+
             ))
+
+;; (setq company-backends '(company-bbdb company-semantic company-cmake  (company-capf :with company-dabbrev)  company-clang company-files (company-dabbrev-code company-gtags company-etags company-keywords)  company-oddmuse company-dabbrev))
 
 ;;(global-set-key "\C-c @ \C-M-s" 'origami-open-all-nodes)
 ;;(global-set-key "\C-c @ \C-M-h" 'origami-close-all-nodes)
@@ -233,8 +249,8 @@ This function should only modify configuration layer settings."
 
      auto-completion
      ;; company + gopls 占内存还是太大了，用回 company-go
-     company
-     tree-sitter
+     ;; company
+     ;; tree-sitter
      lsp ;; ycmd
      ;;  better-defaults
      ;;chinese
@@ -306,7 +322,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(origami s dash hydra lv lsp-mode)
+   dotspacemacs-additional-packages '(origami s dash hydra lv lsp-mode yasnippet-capf)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -768,6 +784,7 @@ before packages are loaded."
     ;;  Restore popwin-mode after a Helm session finishes.
     ;; (add-hook 'helm-cleanup-hook (lambda () (popwin-mode 1)))
 
+    (global-company-mode)
     (menu-bar-mode t)
     (scroll-bar-mode t)
     (setq desktop-save nil)

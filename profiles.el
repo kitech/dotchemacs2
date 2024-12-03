@@ -31,5 +31,6 @@
  )
 
 ;; --deug-init failed: spacemacs
+;; comment treesitter, spacemacs no error now
 ;; startup failed: doom, centaur
 ;; how let them share elpa dir?
