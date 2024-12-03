@@ -28,8 +28,8 @@
 ;;; Code:
 (defvar chemacs-version "2.0")
 (defvar config-home (or (getenv "XDG_CONFIG_HOME") "~/.config"))
-(defvar chemacs-profiles-paths (list "~/.emacs-profiles.el" (format "%s/%s" config-home "chemacs/profiles.el")))
-(defvar chemacs-default-profile-paths (list "~/.emacs-profile" (format "%s/%s" config-home "chemacs/profile")))
+(defvar chemacs-profiles-paths (list "~/.emacs.d/profiles.el" "~/.emacs-profiles.el" (format "%s/%s" config-home "chemacs/profiles.el")))
+(defvar chemacs-default-profile-paths (list "~/.emacs.d/profile" "~/.emacs-profile" (format "%s/%s" config-home "chemacs/profile")))
 (defvar chemacs-profile-env-var "CHEMACS_PROFILE")
 
 ;; Copy `seq' library's `seq-filter' to avoid requiring it, see note above.
@@ -118,7 +118,7 @@ selected profile (if any)."
   (if (and chemacs--with-profile-value
            (listp chemacs--with-profile-value))
       chemacs--with-profile-value
-      (cdr (assoc chemacs-profile-name chemacs-profiles))))
+    (cdr (assoc chemacs-profile-name chemacs-profiles))))
 
 (unless chemacs-profile
   (error "No profile `%s' in %s" chemacs-profile-name chemacs-profiles-path))
@@ -151,13 +151,13 @@ selected profile (if any)."
 (let ((dir (chemacs-profile-get 'nix-elisp-bundle)))
   (when dir
     (if (boundp 'package-directory-list)
-	(add-to-list 'package-directory-list
-		     (expand-file-name "share/emacs/site-lisp/elpa" dir))
+        (add-to-list 'package-directory-list
+                     (expand-file-name "share/emacs/site-lisp/elpa" dir))
       (add-to-list 'load-path
-		   (expand-file-name "share/emacs/site-lisp" dir)))
+                   (expand-file-name "share/emacs/site-lisp" dir)))
     (when (boundp 'native-comp-eln-load-path)
       (add-to-list 'native-comp-eln-load-path
-		   (expand-file-name "share/emacs/native-lisp/" dir)))))
+                   (expand-file-name "share/emacs/native-lisp/" dir)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
