@@ -2,8 +2,9 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/handby/"))
-(require 'gzleo)
+(require 'mine)
 
 (setq ycmd-force-semantic-completion nil)
 (set-variable 'ycm_server_python_interpreter "/usr/bin/python")
@@ -74,12 +75,12 @@
 (add-to-list 'auto-mode-alist '("\\.g4\\'" . antlr-mode))
 
 ;; folding, TODO dynamic load dash and s，少一个折叠指示标识，像小三角形
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/dash-20160820.501/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/s-20160928.636/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/29.4/develop/dash-20240510.1327/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/s-20160928.636/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/29.4/develop/hydra-20220910.1206/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/29.4/develop/lv-20200507.1518/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/dash-20160820.501/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/s-20160928.636/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/29.4/develop/dash-20240510.1327/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/s-20160928.636/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/29.4/develop/hydra-20220910.1206/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/space1/elpa/29.4/develop/lv-20200507.1518/"))
 ;(require 'dash)
 ;(require 's)
 ;(require 'origami)
@@ -292,7 +293,7 @@ This function should only modify configuration layer settings."
    ;; installs only the used packages but won't delete unused ones. `all'
    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
    ;; (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-install-packages 'used-but-keep-unused))
 
 (defun dotspacemacs/init ()
   "Initialization:

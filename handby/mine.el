@@ -1,5 +1,5 @@
-;;; gzleo.el --- 
-;; 
+;;; gzleo.el ---
+;;
 ;; URL: http://www.qtchina.net http://nullget.sourceforge.net
 ;; Created: 2009-08-29 17:25:07 +0800
 ;; Version: $Id: gzleo.el 1159 2014-03-21 05:57:04Z drswinghead $
@@ -37,8 +37,8 @@
          )
        )
     )
-  (if (or (string= nameext "cpp") 
-          (string= nameext "c") 
+  (if (or (string= nameext "cpp")
+          (string= nameext "c")
           (string= nameext "cc")
           (string= nameext "cxx"))
       (
@@ -110,4 +110,4 @@
 ;; (run-with-idle-timer 0.1 nil 'toggle-full-screen)
 
 
-(provide 'gzleo)
+(provide 'mine)
